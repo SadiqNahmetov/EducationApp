@@ -31,7 +31,7 @@ function MyNavbar() {
         </Container>
       </div>
       <div className='contact'>
-        <FiPhoneCall  size="30px"/>
+        <FiPhoneCall size="30px"  />
         <span>+994 50 500 50 50</span>
       </div>
     </Navbar>

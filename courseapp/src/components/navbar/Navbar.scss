@@ -10,23 +10,32 @@
     font-family: logo;
     src: url(../../../public/fonts/LibreBaskerville-Regular.ttf);
 }
+
 @font-face {
     font-family: navbar;
     src: url(../../../public/fonts/LibreBaskerville-Regular.ttf);
 }
+
 .navArea {
+    position: fixed;
     top: 45px;
+    z-index: 2;
 
     .myNavbar {
-        width: 70rem;
         padding: 35px !important;
-        background-color: #87755B;
+        background-color: #fff;
 
         .my-auto {
             font-family: navbar;
-            font-size:20px;
+            font-size: 20px;
             gap: 15px;
+
+            :hover {
+                color: #FFB606 !important;
+            }
+
         }
+
 
     }
 
