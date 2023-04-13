@@ -53,7 +53,6 @@ function Box() {
       </div>
     </div>
 
-
   )
 }
 

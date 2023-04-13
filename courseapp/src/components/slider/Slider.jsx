@@ -1,8 +1,6 @@
 import React  from 'react'
 import Carousel from 'react-bootstrap/Carousel';
 import './Slider.scss';
-
-import Box from '../box/Box';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 AOS.init();
@@ -12,9 +10,7 @@ AOS.init();
 function Slider() {
   return (
     <div>
-      <div className='container'>
-           <Box/>
-      </div>
+     
       <Carousel>
         <Carousel.Item>
           <div className='slider'>

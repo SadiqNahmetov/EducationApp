@@ -1,9 +1,12 @@
 import React from 'react'
 
-function Header() {
+function Title() {
   return (
     <div>
-      <div className="row">
+
+     <div className='popular title_section'>
+        <div className='container'>
+        <div className="row">
         <div className="col">
           <div className="section_title text-center">
             <h1>Popular Courses</h1>
@@ -11,9 +14,14 @@ function Header() {
 
         </div>
       </div>
+        </div>
+     </div>
+
+
+      
 
     </div>
   )
 }
 
-export default Header;
+export default Title;

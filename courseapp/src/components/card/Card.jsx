@@ -1,12 +1,12 @@
 import React from 'react'
-import Title from '../title/Title'
 
-function Course() {
+
+function Card() {
   return (
     <div>
       <div className="popular page_section">
         <div className="container">
-             <Title />
+          
           <div className="row course_boxes">
 
             <div className="col-lg-4 course_box">
@@ -91,4 +91,4 @@ function Course() {
   )
 }
 
-export default Course;
+export default Card;

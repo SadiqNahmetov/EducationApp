@@ -3,6 +3,7 @@ import { FiLinkedin } from "react-icons/fi";
 import { FiInstagram } from "react-icons/fi";
 import { FiFacebook } from "react-icons/fi";
 import { FiTwitter } from "react-icons/fi";
+import ContactInfo from '../contactInfo/ContactInfo';
 
 
 
@@ -83,31 +84,7 @@ function Footer() {
 
                             <div className="col-lg-3 footer_col">
                                 <div className="footer_column_title">Contact</div>
-                                <div className="footer_column_content">
-                                    <ul>
-                                        <li className="footer_contact_item">
-                                            <div className="footer_contact_icon">
-
-                                                <img src="./images/placeholder.svg" alt="" />
-                                            </div>
-                                            Blvd Libertad, 34 m05200 Arévalo
-                                        </li>
-                                        <li className="footer_contact_item">
-                                            <div className="footer_contact_icon">
-
-                                                <img src="./images/smartphone.svg" alt="" />
-                                            </div>
-                                            0034 37483 2445 322
-                                        </li>
-                                        <li className="footer_contact_item">
-                                            <div className="footer_contact_icon">
-
-                                                <img src="./images/envelope.svg" alt="" />
-                                            </div><a href="https://preview.colorlib.com/cdn-cgi/l/email-protection" className="__cf_email__"
-                                                data-cfemail="553d3039393a15363a3825343b2c7b363a38">hello@company.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
+                               <ContactInfo/>
                             </div>
                         </div>
                     </div>
