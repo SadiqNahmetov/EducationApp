@@ -22,7 +22,6 @@ function MyNavbar() {
                 <li className="main_nav_item"> <Link className="navColor" to="/">Home</Link></li>
                 <li className="main_nav_item">  <Link className="navColor" to="/about">About Us</Link></li>
                 <li className="main_nav_item">  <Link className="navColor" to="/course">Courses</Link></li>
-                <li className="main_nav_item">  <Link className="navColor" to="/about">Elements</Link></li>
                 <li className="main_nav_item">  <Link className="navColor" to="/news">News</Link></li>
                 <li className="main_nav_item">  <Link className="navColor" to="/contact">Contact</Link></li>
               </ul>

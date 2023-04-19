@@ -14,7 +14,7 @@ function Slider() {
       <Carousel>
         <Carousel.Item>
           <div className='slider'>
-            <div className='animation' data-aos="zoom-out-up">
+            <div className='animation' data-aos="zoom-in-up">
               Get your <span>Education</span> today!
             </div>
 
@@ -30,7 +30,7 @@ function Slider() {
 
         <Carousel.Item>
           <div className='slider'>
-            <div className='animation' data-aos="zoom-out-up">
+            <div className='animation'data-aos="zoom-in-up">
               Get your <span>Education</span> today!
             </div>
             <img
@@ -43,7 +43,7 @@ function Slider() {
         </Carousel.Item>
         <Carousel.Item>
           <div className='slider'>
-            <div className='animation' data-aos="zoom-out-up">
+            <div className='animation' data-aos="zoom-in-up">
               Get your <span>Education</span> today!
             </div>
             <img

@@ -4,6 +4,7 @@ import { FiInstagram } from "react-icons/fi";
 import { FiFacebook } from "react-icons/fi";
 import { FiTwitter } from "react-icons/fi";
 import ContactInfo from '../contactInfo/ContactInfo';
+import { Link } from 'react-router-dom';
 
 
 
@@ -60,11 +61,11 @@ function Footer() {
                                 <div className="footer_column_title">Menu</div>
                                 <div className="footer_column_content">
                                     <ul>
-                                        <li className="footer_list_item"><a href="#">Home</a></li>
-                                        <li className="footer_list_item"><a href="#">About Us</a></li>
-                                        <li className="footer_list_item"><a href="courses.html">Courses</a></li>
-                                        <li className="footer_list_item"><a href="news.html">News</a></li>
-                                        <li className="footer_list_item"><a href="contact.html">Contact</a></li>
+                                        <li className="footer_list_item"><Link to='/'>Home</Link></li>
+                                        <li className="footer_list_item"><Link to='/about'>About Us</Link></li>
+                                        <li className="footer_list_item"><Link to='/course'>Courses</Link></li>
+                                        <li className="footer_list_item"><Link to='/news'>News</Link></li>
+                                        <li className="footer_list_item"><Link to='/contact'>Contact</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -73,11 +74,11 @@ function Footer() {
                                 <div className="footer_column_title">Usefull Links</div>
                                 <div className="footer_column_content">
                                     <ul>
-                                        <li className="footer_list_item"><a href="#">Testimonials</a></li>
-                                        <li className="footer_list_item"><a href="#">FAQ</a></li>
-                                        <li className="footer_list_item"><a href="#">Community</a></li>
-                                        <li className="footer_list_item"><a href="#">Campus Pictures</a></li>
-                                        <li className="footer_list_item"><a href="#">Tuitions</a></li>
+                                        <li className="footer_list_item"><Link >Testimonials</Link></li>
+                                        <li className="footer_list_item"><Link to='/faq'>FAQ</Link></li>
+                                        <li className="footer_list_item"><Link >Community</Link></li>
+                                        <li className="footer_list_item"><Link >Campus Pictures</Link></li>
+                                        <li className="footer_list_item"><Link >Tuitions</Link></li>
                                     </ul>
                                 </div>
                             </div>
@@ -96,16 +97,16 @@ function Footer() {
                                 <script data-cfasync="false"
                                     src="../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
                                 <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made
-                                with <i className="fa fa-heart" aria-hidden="true"></i> by <a href="https://github.com/SadiqNahmetov"
-                                    target="_blank">Sadig Nahmatov</a>
+                                with <i className="fa fa-heart" aria-hidden="true"></i> by <Link to='https://github.com/SadiqNahmetov'
+                                    target="_blank">Sadig Nahmatov</Link>
                             </span>
                         </div>
                         <div className="footer_social ml-sm-auto">
                             <ul className="menu_social">
-                                <li className="menu_social_item"><a href="#"><FiLinkedin className="fab" /></a></li>
-                                <li className="menu_social_item"><a href="#"><FiInstagram className="fab" /></a></li>
-                                <li className="menu_social_item"><a href="#"><FiFacebook className="fab" /></a></li>
-                                <li className="menu_social_item"><a href="#"><FiTwitter className="fab" /></a></li>
+                                <li className="menu_social_item"><Link to="https://www.linkedin.com/in/sadig-nahmatov-a320b5264"><FiLinkedin className="fab" /></Link></li>
+                                <li className="menu_social_item"><Link ><FiInstagram className="fab" /></Link></li>
+                                <li className="menu_social_item"><Link ><FiFacebook className="fab" /></Link></li>
+                                <li className="menu_social_item"><Link ><FiTwitter className="fab" /></Link></li>
                             </ul>
                         </div>
                     </div>

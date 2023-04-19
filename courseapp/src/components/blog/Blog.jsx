@@ -4,6 +4,7 @@ function Blog() {
   return (
    
         <div className="news_post">
+
                 <div className="news_post_image">
                   <img src="../../../images/blog/blog_1.jpg" alt="blog"/>
                 </div>
@@ -32,6 +33,7 @@ function Blog() {
                 </div>
                 <div className="news_post_button text-center trans_200">
                   <a href="news_post.html">Read More</a>
+                 
                 </div>
               </div>
     

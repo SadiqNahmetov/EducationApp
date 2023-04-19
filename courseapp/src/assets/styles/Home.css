@@ -372,7 +372,7 @@ section {
 .main_nav_container {
 	display: inline-block;
 	margin-left: auto;
-	padding-right: 93px;
+	padding-right: 190px !important;
 }
 
 .main_nav {
@@ -1462,7 +1462,7 @@ input:last-of-type {
 	margin-bottom: 11px;
 }
 
-.footer_list_item a {
+.footer_list_item Link {
 	font-size: 14px;
 	color: #a5a5a5;
 	-webkit-transition: all 200ms ease;
@@ -1472,7 +1472,7 @@ input:last-of-type {
 	transition: all 200ms ease;
 }
 
-.footer_list_item a:hover {
+.footer_list_item Link:hover {
 	color: #ffb606;
 }
 
