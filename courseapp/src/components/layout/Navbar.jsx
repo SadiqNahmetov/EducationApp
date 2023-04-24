@@ -1,8 +1,10 @@
 import React from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from "react-router-dom";
-import {  FiPhoneCall } from "react-icons/fi";
 
-function MyNavbar() {
+
+
+function Navbar() {
 
   return (
     <>
@@ -19,18 +21,29 @@ function MyNavbar() {
           <nav className="main_nav_container">
             <div className="main_nav">
               <ul className="main_nav_list">
-                <li className="main_nav_item"> <Link className="navColor" to="/">Home</Link></li>
-                <li className="main_nav_item">  <Link className="navColor" to="/about">About Us</Link></li>
-                <li className="main_nav_item">  <Link className="navColor" to="/course">Courses</Link></li>
-                <li className="main_nav_item">  <Link className="navColor" to="/news">News</Link></li>
-                <li className="main_nav_item">  <Link className="navColor" to="/contact">Contact</Link></li>
+                <li className="main_nav_item"> <Link to="/">Home</Link></li>
+                <li className="main_nav_item">  <Link  to="/about">About Us</Link></li>
+                <li className="main_nav_item">  <Link  to="/course">Courses</Link></li>
+                <li className="main_nav_item">  <Link  to="/news">News</Link></li>
+                <li className="main_nav_item">  <Link  to="/contact">Contact</Link></li>
+
               </ul>
             </div>
           </nav>
         </div>
         <div className="header_side d-flex flex-row justify-content-center align-items-center">
-          <FiPhoneCall size="30px" color='#fff' />
-          <span>+43 4566 7788 2457</span>
+        <Dropdown>
+          <Dropdown.Toggle className='btn btn-light' id="dropdown-basic">
+            My Account
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item ><Link to = "login">Login</Link></Dropdown.Item>
+            <Dropdown.Item ><Link to = "register">Register</Link></Dropdown.Item>
+            <Dropdown.Item ><Link to = "">Logout</Link></Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+        
         </div>
 
         <div className="hamburger_container">
@@ -41,4 +54,4 @@ function MyNavbar() {
   )
 }
 
-export default MyNavbar;
+export default Navbar;

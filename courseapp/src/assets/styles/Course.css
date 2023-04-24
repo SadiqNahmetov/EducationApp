@@ -370,10 +370,7 @@ section {
 	margin-top: 7px;
 }
 
-.main_nav_item {
-	display: inline-block;
-	margin-right: 40px;
-}
+
 
 .main_nav_item:last-child {
 	margin-right: 0px;

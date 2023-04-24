@@ -9,11 +9,14 @@ import Course from './pages/course/Course';
 import News  from "./pages/news/News";
 import Contact from "./pages/contact/Contact";
 import About from "./pages/about/About";
+import Login from "./pages/account/Login";
+import Register from "./pages/account/Register"
 
 
 
 
 function App() {
+
   return (
     <div>
       <Navbar />
@@ -25,6 +28,9 @@ function App() {
         <Route  path="/news" element={<News />} />
         <Route  path="/contact" element={<Contact />} />
         <Route  path="/about" element={<About />} />
+        <Route  path="/login" element={<Login />} />
+        <Route  path="/register" element={<Register />} />
+
 
       
 

@@ -1,10 +1,13 @@
 import React from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function Latest() {
   return (
     <>
       
-                <div className="latest_posts">
+                <div className="latest_posts" data-aos="fade-up" data-aos-duration="1400">
 
                   <div className="latest_post">
                     <div className="latest_post_image">

@@ -1,10 +1,13 @@
 import React from 'react'
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function Card() {
   return (
     <div>
-      <div className="popular page_section">
+      <div className="popular page_section" data-aos="fade-up"
+       data-aos-duration="1200">
         <div className="container">
           
           <div className="row course_boxes">

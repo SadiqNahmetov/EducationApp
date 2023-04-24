@@ -1,9 +1,13 @@
 import React from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
+
 
 function Blog() {
   return (
    
-        <div className="news_post">
+        <div className="news_post" data-aos="fade-up" data-aos-duration="1000">
 
                 <div className="news_post_image">
                   <img src="../../../images/blog/blog_1.jpg" alt="blog"/>

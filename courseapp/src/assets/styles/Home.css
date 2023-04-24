@@ -381,7 +381,7 @@ section {
 
 .main_nav_item {
 	display: inline-block;
-	margin-right: 40px;
+	margin-right: 40px ;
 }
 
 .main_nav_item:last-child {
@@ -1372,7 +1372,10 @@ input:last-of-type {
 	padding-top: 86px;
 	background: #1a1a1a;
 }
+.footer_copyright{
+color: #a5a5a5;
 
+}
 .footer .section_title h1 {
 	color: #FFFFFF;
 }

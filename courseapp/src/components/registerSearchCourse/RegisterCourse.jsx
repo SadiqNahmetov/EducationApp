@@ -1,10 +1,14 @@
 import React from 'react'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function RegisterCourse() {
     return (
         <div>
 
-            <div className="register">
+            <div className="register" data-aos="fade-up"
+            data-aos-duration="1200">
                 <div className="container-fluid">
                     <div className="row row-eq-height">
                         <div className="col-lg-6 nopadding">

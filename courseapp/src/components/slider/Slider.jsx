@@ -12,7 +12,7 @@ function Slider() {
     <div>
      
       <Carousel>
-        <Carousel.Item>
+        <Carousel.Item >
           <div className='slider'>
             <div className='animation' data-aos="zoom-in-up">
               Get your <span>Education</span> today!

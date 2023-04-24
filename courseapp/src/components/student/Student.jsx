@@ -1,12 +1,15 @@
 import React from 'react'
 import Title from '../title/Title'
 import Carousel from 'react-bootstrap/Carousel';
-
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function Student() {
     return (
         <div>
-            <div className="testimonials page_section">
+            <div className="testimonials page_section" data-aos="fade-up"
+                data-aos-duration="1000">
 
                 <div className="testimonials_background_container prlx_parent">
                     <div>

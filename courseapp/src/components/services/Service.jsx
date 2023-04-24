@@ -1,10 +1,14 @@
 import React from 'react'
 import Title from '../title/Title';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+AOS.init();
 
 function Service() {
     return (
         <div>
-            <div className="services page_section">
+            <div className="services page_section" data-aos="fade-up"
+       data-aos-duration="1000">
                 <div className="container">
                     <Title />
                     <div className="row services_row">
