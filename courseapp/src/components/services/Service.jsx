@@ -10,7 +10,8 @@ function Service() {
             <div className="services page_section" data-aos="fade-up"
        data-aos-duration="1000">
                 <div className="container">
-                    <Title />
+                <Title sectionTitle="Our Services"/>
+                  
                     <div className="row services_row">
                         <div className="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
                             <div className="icon_container d-flex flex-column justify-content-end">

@@ -5,6 +5,7 @@ import { FiFacebook } from "react-icons/fi";
 import { FiTwitter } from "react-icons/fi";
 import ContactInfo from '../contactInfo/ContactInfo';
 import { Link } from 'react-router-dom';
+import Title from '../title/Title';
 
 
 
@@ -17,13 +18,8 @@ function Footer() {
                 <div className="container">
 
                     <div className="newsletter">
-                        <div className="row">
-                            <div className="col">
-                                <div className="section_title text-center">
-                                    <h1>Subscribe to newsletter</h1>
-                                </div>
-                            </div>
-                        </div>
+                        <Title sectionTitle="Subscribe to newsletter"/>
+                     
                         <div className="row">
                             <div className="col text-center">
                                 <div className="newsletter_form_container mx-auto">

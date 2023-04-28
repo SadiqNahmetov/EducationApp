@@ -15,7 +15,7 @@ function Home() {
         <>
             <Slider />
             <Box />
-            <Title />
+            <Title sectionTitle="Popular Courses"/>
             <Card />
             <RegisterCourse />
             <Service />

@@ -38,9 +38,9 @@ function Navbar() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item ><Link to = "login">Login</Link></Dropdown.Item>
-            <Dropdown.Item ><Link to = "register">Register</Link></Dropdown.Item>
-            <Dropdown.Item ><Link to = "">Logout</Link></Dropdown.Item>
+            <Dropdown.Item ><Link className='colorLogin' to = "login">Login</Link></Dropdown.Item>
+            <Dropdown.Item ><Link className='colorLogin' to = "register">Register</Link></Dropdown.Item>
+            <Dropdown.Item ><Link className='colorLogin' to = "">Logout</Link></Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
         

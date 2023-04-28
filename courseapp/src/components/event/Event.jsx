@@ -11,7 +11,8 @@ function Event() {
       <div className="events page_section" data-aos="fade-up"
         data-aos-duration="1200">
         <div className="container">
-          <Title />
+       
+        <Title sectionTitle="Upcoming Events"/>
           <div className="event_items">
 
             <div className="row event_item">

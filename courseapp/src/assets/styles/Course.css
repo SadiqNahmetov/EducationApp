@@ -754,9 +754,7 @@ section {
 	height: 48px;
 }
 
-/*********************************
-9. Popular
-*********************************/
+
 
 
 
@@ -913,11 +911,7 @@ section {
 10.2 Footer Content
 *********************************/
 
-.footer_content {
-	padding-top: 80px;
-	padding-bottom: 83px;
-	border-bottom: solid 2px #4d4e4e;
-}
+
 
 .footer_content .logo_container {
 	padding-left: 0px;

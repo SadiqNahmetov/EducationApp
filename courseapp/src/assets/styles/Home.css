@@ -232,6 +232,13 @@ section {
 	clear: both;
 }
 
+
+.colorLogin{
+	color: #000;
+}
+.colorLogin:hover{
+	color: red;
+}
 .clearfix {
 	zoom: 1;
 }
@@ -874,12 +881,8 @@ section {
 }
 
 .title_section{
-	padding-top: 117px;
+	padding-top: 45px;
 
-}
-.footer .title_section{
-	padding-bottom: 117px;
-	
 }
 
 
@@ -930,9 +933,7 @@ section {
 	height: 48px;
 }
 
-/*********************************
-9. Popular
-*********************************/
+
 
 
 
@@ -1369,7 +1370,6 @@ input:last-of-type {
 
 .footer {
 	width: 100%;
-	padding-top: 86px;
 	background: #1a1a1a;
 }
 .footer_copyright{
@@ -1384,10 +1384,7 @@ color: #a5a5a5;
 15.1 Newsletter
 *********************************/
 
-.newsletter {
-	padding-bottom: 85px;
-	border-bottom: solid 2px #4d4e4e;
-}
+
 
 .newsletter_form_container {
 	width: 60%;
