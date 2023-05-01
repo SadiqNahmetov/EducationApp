@@ -1,6 +1,7 @@
 import React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import { Link } from "react-router-dom";
+import {SlBasket} from 'react-icons/sl'
 
 
 
@@ -43,7 +44,7 @@ function Navbar() {
             <Dropdown.Item ><Link className='colorLogin' to = "">Logout</Link></Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        
+       <Link to="basket"> <SlBasket  className='basket-icon'/></Link>
         </div>
 
         <div className="hamburger_container">

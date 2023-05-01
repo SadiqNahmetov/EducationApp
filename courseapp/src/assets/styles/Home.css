@@ -307,6 +307,12 @@ section {
 /*********************************
 3. Header
 *********************************/
+.basket-icon{
+	margin-left: 30px;
+	color: #fff;
+	font-size: 30px;
+}
+
 
 .header {
 	position: fixed;
