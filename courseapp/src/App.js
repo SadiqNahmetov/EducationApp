@@ -3,42 +3,43 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Home from './pages/home/Home';
-import Navbar from './components/layout/Navbar';
-import Footer from './components/layout/Footer';
 import Course from './pages/course/Course';
-import News  from "./pages/news/News";
+import News from "./pages/news/News";
 import Contact from "./pages/contact/Contact";
 import About from "./pages/about/About";
 import Login from "./pages/account/Login";
 import Register from "./pages/account/Register"
-
+import SliderTable from "./pages/admin/slider/SliderTable";
+import SliderCreate from "./pages/admin/slider/SliderCreate";
+import Dashboard from "./pages/admin/Dashboard";
+import SliderUpdate from "./pages/admin/slider/SliderUpdate";
 
 
 
 function App() {
 
+  
+
   return (
     <div>
-      <Navbar />
 
       <Routes>
-        <Route  path="/" element={<Home />} />
-        
-        <Route  path="/course" element={<Course />} />
-        <Route  path="/news" element={<News />} />
-        <Route  path="/contact" element={<Contact />} />
-        <Route  path="/about" element={<About />} />
-        <Route  path="/login" element={<Login />} />
-        <Route  path="/register" element={<Register />} />
+        <Route path="/" element={<Home />} />
 
-
-      
-
+        <Route path="/course" element={<Course />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/sliderTable" element={<SliderTable />} />
+        <Route path="/sliderCreate" element={<SliderCreate />} />
+        <Route path="/sliderUpdate/:id" element={<SliderUpdate />} />
 
 
       </Routes>
 
-        <Footer />
     </div>
   );
 }

@@ -2,9 +2,12 @@ import React from 'react'
 import '../../assets/styles/Contact.css';
 import Header from '../../components/header/Header';
 import ContactInfo from '../../components/contactInfo/ContactInfo';
+import Navbar from '../../components/layout/Navbar';
+import Footer from '../../components/layout/Footer';
 function Contact() {
     return (
         <>
+        <Navbar />
             <Header />
             <div className="contact">
                 <div className="container" style={{maxWidth:"1200px"}}>
@@ -53,7 +56,8 @@ function Contact() {
                     </div>
                 </div>
             </div>
-
+        
+        <Footer />
         </>
     )
 }

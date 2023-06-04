@@ -5,11 +5,14 @@ import Blog from '../../components/blog/Blog'
 import Archive from '../../components/archive/Archive';
 import Latest from '../../components/latestPosts/LatestPost';
 import Tag from '../../components/tag/Tag';
+import Navbar from '../../components/layout/Navbar';
+import Footer from '../../components/layout/Footer';
 
 
 function News() {
   return (
-    <div>
+    <>
+      <Navbar />
       <Header />
 
       <div className="news">
@@ -67,7 +70,9 @@ function News() {
           </div>
         </div>
       </div>
-    </div>
+
+      <Footer />
+    </>
   )
 }
 

@@ -13,6 +13,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../../components/header/Header';
+import Navbar from '../../components/layout/Navbar';
+import Footer from '../../components/layout/Footer';
 
 
 const theme = createTheme();
@@ -29,6 +31,7 @@ export default function SignInSide() {
 
   return (
     <>
+    <Navbar/>
       <Header/>
       <div className='container my-5'>
         <ThemeProvider theme={theme}>
@@ -116,6 +119,7 @@ export default function SignInSide() {
           </Grid>
         </ThemeProvider>
       </div>
+      <Footer/>
     </>
 
   );

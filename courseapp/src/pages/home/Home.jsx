@@ -8,11 +8,14 @@ import Card from '../../components/card/Card';
 import Student from '../../components/student/Student';
 import '../../assets/styles/Home.css';
 import Title from '../../components/title/Title';
+import Navbar from '../../components/layout/Navbar';
+import Footer from '../../components/layout/Footer';
 
 
 function Home() {
     return (
         <>
+        <Navbar />
             <Slider />
             <Box />
             <Title sectionTitle="Popular Courses"/>
@@ -21,6 +24,8 @@ function Home() {
             <Service />
             <Student />
             <Event />
+
+            <Footer />
           
         </>
     )
