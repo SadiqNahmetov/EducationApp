@@ -13,6 +13,8 @@ import SliderTable from "./pages/admin/slider/SliderTable";
 import SliderCreate from "./pages/admin/slider/SliderCreate";
 import Dashboard from "./pages/admin/Dashboard";
 import SliderUpdate from "./pages/admin/slider/SliderUpdate";
+import HeaderTable from "./pages/admin/header/HeaderTable";
+import HeaderCreate from "./pages/admin/header/HeaderCreate";
 
 
 
@@ -32,10 +34,15 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+
         <Route path="/dashboard" element={<Dashboard />} />
+
         <Route path="/sliderTable" element={<SliderTable />} />
         <Route path="/sliderCreate" element={<SliderCreate />} />
         <Route path="/sliderUpdate/:id" element={<SliderUpdate />} />
+        
+        <Route path="/headerTable" element={<HeaderTable />} />
+        <Route path="/headerCreate" element={<HeaderCreate />} />
 
 
       </Routes>

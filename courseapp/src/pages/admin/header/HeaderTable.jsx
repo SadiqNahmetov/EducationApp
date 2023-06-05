@@ -6,35 +6,35 @@ import moment from 'moment';
 import axios from "axios";
 
 
-function SliderTable() {
+function HeaderTable() {
 
   let count = 1;
 
   const url = 'https://localhost:7184';
 
-  const [slider, setSlider] = useState([]);
+  const [header, setHeader] = useState([]);
 
 
-  const getAllSlider = async () => {
-    await axios.get(`${url}/api/Slider/GetAll`)
+  const getAllHeader = async () => {
+    await axios.get(`${url}/api/Header/GetAll`)
       .then((res) => {
-        setSlider(res.data);
+        setHeader(res.data);
       });
   }
 
   useEffect(() => {
-    getAllSlider();
+    getAllHeader();
   }, []);
 
 
-  const DeleteSlider = async (id) => {
-  
+  const DeleteHeader = async (id) => {
+    console.log(id);
     await axios
-      .delete(`${url}/api/Slider/Delete?id=${id}`)
+    .delete(`${url}/api/Header/Delete?id=${id}`)
       .then((res) => {
-        Swal.fire("", "Deleted Slider", "success");
+        Swal.fire("", "Deleted Header", "success");
         console.log(res);
-        getAllSlider();
+        getAllHeader();
       })
       .catch((err) => {
         Swal.fire({
@@ -51,9 +51,9 @@ function SliderTable() {
     <div className="container">
       <div className="row">
         <div className="col-lg-12 grid-margin stretch-card my-5">
-          <h2 className="mx-auto">Slider Table</h2>
+          <h2 className="mx-auto">Header Table</h2>
           <div className='d-flex justify-content-between'>
-            <Link to="/SliderCreate">
+            <Link to="/HeaderCreate">
               <button className="btn btn-success my-2" style={{ float: "right" }}>Create</button>
             </Link>
             <Link to="/dashboard">
@@ -73,7 +73,7 @@ function SliderTable() {
             </thead>
             <tbody>
               {
-                slider.map((slider, index) => (
+                header.map((headerItem, index) => (
                   <tr key={index} style={{ textAlign: "center", verticalAlign: "middle" }}>
                     <td className="table-dark">{count++}</td>
                     <td className="table-dark">
@@ -82,17 +82,17 @@ function SliderTable() {
                         height: "70px",
                         borderRadius: "unset",
                       }}
-                        src={`data:image/jpeg;base64,${slider.image}`} alt="sliderImage" />
+                        src={`data:image/jpeg;base64,${headerItem.image}`} alt="headerImage" />
                     </td>
-                    <td className="py-1 table-dark" dangerouslySetInnerHTML={{ __html: slider.title }}></td>
-                    <td className="table-dark">{moment(slider.createDate).format('DD-MM-YYYY HH:mm:ss')}</td>
-                    <td className="table-dark">{moment(slider.updateDate).format('DD-MM-YYYY HH:mm:ss')}</td>
+                    <td className="py-1 table-dark" dangerouslySetInnerHTML={{ __html: headerItem.title }}></td>
+                    <td className="table-dark">{moment(headerItem.createDate).format('DD-MM-YYYY HH:mm:ss')}</td>
+                    <td className="table-dark">{moment(headerItem.updateDate).format('DD-MM-YYYY HH:mm:ss')}</td>
                     <td className="table-dark">
-                      <Link to={`/sliderUpdate/${slider.id}`}>
+                      <Link to={`/headerUpdate/${headerItem.id}`}>
                         <button className="btn btn-warning" style={{ marginRight: "15px" }}>Update</button>
                       </Link>
                       <button
-                        onClick={() => DeleteSlider(slider.id)}
+                        onClick={() => DeleteHeader(headerItem.id)}
                         type="button"
                         className="btn btn-danger"
                       >
@@ -111,4 +111,4 @@ function SliderTable() {
   );
 }
 
-export default SliderTable;
+export default HeaderTable;
