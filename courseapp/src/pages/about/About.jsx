@@ -9,10 +9,9 @@ function About() {
   return (
     <div>
       <Navbar />
-
-      <Header />
+      <Header sectionHeader="About Us" />
       <AboutUs />
-       <Footer />
+      <Footer />
     </div>
   )
 }

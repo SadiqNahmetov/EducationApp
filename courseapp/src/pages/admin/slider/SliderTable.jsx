@@ -28,7 +28,7 @@ function SliderTable() {
 
 
   const DeleteSlider = async (id) => {
-  
+     console.log(id);
     await axios
       .delete(`${url}/api/Slider/Delete?id=${id}`)
       .then((res) => {

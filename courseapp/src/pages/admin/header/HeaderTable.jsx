@@ -28,7 +28,7 @@ function HeaderTable() {
 
 
   const DeleteHeader = async (id) => {
-    console.log(id);
+ console.log(id); 
     await axios
     .delete(`${url}/api/Header/Delete?id=${id}`)
       .then((res) => {
