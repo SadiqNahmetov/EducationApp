@@ -16,6 +16,9 @@ import SliderUpdate from "./pages/admin/slider/SliderUpdate";
 import HeaderTable from "./pages/admin/header/HeaderTable";
 import HeaderCreate from "./pages/admin/header/HeaderCreate";
 import HeaderUpdate from "./pages/admin/header/HeaderUpdate";
+import AboutTable from "./pages/admin/about/AboutTable";
+import AboutCreate from "./pages/admin/about/AboutCreate";
+import AboutUpdate from "./pages/admin/about/AboutUpdate";
 
 
 
@@ -45,6 +48,12 @@ function App() {
         <Route path="/headerTable" element={<HeaderTable />} />
         <Route path="/headerCreate" element={<HeaderCreate />} />
         <Route path="/headerUpdate/:id" element={<HeaderUpdate />} />
+
+        <Route path="/aboutTable" element={<AboutTable />} />
+        <Route path="/aboutCreate" element={<AboutCreate />} />
+        <Route path="/aboutUpdate/:id" element={<AboutUpdate />} />
+
+
 
 
 
