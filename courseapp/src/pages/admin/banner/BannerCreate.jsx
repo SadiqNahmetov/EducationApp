@@ -1,48 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Swal from "sweetalert2";
+import { Link, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
-function AboutCreate() {
+function BannerCreate() {
 
     const navigate = useNavigate();
 
     const url = 'https://localhost:7184';
 
-    const [about, setAbout] = useState([]);
-    const [image, setImage] = useState();
+    const [banner, setBanner] = useState([]);
+    const [svg, setSvg] = useState();
     const [title, setTitle] = useState();
-    const [description, setDescription] = useState();
 
-
-    const getAllAbout = async () => {
-        await axios.get(`${url}/api/About/GetAll`)
+    const getAllBanner = async () => {
+        await axios.get(`${url}/api/Banner/GetAll`)
             .then((res) => {
-                setAbout(res.data);
+                setBanner(res.data);
             });
     };
 
     useEffect(() => {
-        getAllAbout();
+        getAllBanner();
     }, []);
 
-    const newAbout = {
-        image,
-        title,
-        description
+    const newBanner = {
+        Image: svg,
+        Title: title
     };
 
-    const CreateAbout = async (e) => {
+    const CreateBanner = async (e) => {
         e.preventDefault();
-        await axios.post(`${url}/api/About/Create`, newAbout)
+        await axios.post(`${url}/api/Banner/Create`, newBanner)
             .then((res) => {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'About Created',
+                    title: 'Banner Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -52,15 +48,16 @@ function AboutCreate() {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',
-                    title: 'About not Created',
+                    title: 'Banner not Created',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
             });
 
-        navigate('/AboutTable');
+        navigate('/BannerTable');
     };
+
 
     const getBase64 = (file) => {
         return new Promise((resolve, reject) => {
@@ -72,17 +69,17 @@ function AboutCreate() {
         });
     };
 
-    const base64Img = (file) => {
+    const base64Svg = (file) => {
         getBase64(file).then((result) => {
-            setImage(result);
-        });
+            setSvg(result);
+        })
     };
 
 
     return (
         <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-            <h2 className='my-5' style={{ textAlign: "center" }}>Create About</h2>
-            <Form onSubmit={(e) => CreateAbout(e)}>
+            <h2 className='my-5' style={{ textAlign: "center" }}>Create Banner</h2>
+            <Form onSubmit={(e) => CreateBanner(e)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <p>Image</p>
                     <img
@@ -92,13 +89,12 @@ function AboutCreate() {
                             marginBottom: "10px",
                             borderRadius: "unset",
                         }}
-                        src={`data:image/jpeg;base64,${image}`}
-                        alt="about image"
+                        src={`data:image/svg+xml;base64,${svg}`}
+                        alt="bannerSvg"
                     />
                     <Form.Control
                         type="file"
-                        onChange={(e) => base64Img(e.target.files[0])}
-                    />
+                        onChange={(e) => base64Svg(e.target.files[0])} />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
@@ -111,21 +107,11 @@ function AboutCreate() {
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Description</Form.Label>
-                    <Form.Control
-                        type="text"
-                        placeholder="Enter Description"
-                        onFocus={(e) => e.target.placeholder = ''}
-                        onBlur={(e) => e.target.placeholder = 'Enter Description'}
-                        onChange={(e) => setDescription(e.target.value)}
-                    />
-                </Form.Group>
 
                 <Button variant="outline-primary" type="submit">
                     Create
                 </Button>
-                <Link to="/AboutTable">
+                <Link to="/BannerTable">
                     <Button variant="outline-dark" type="submit" className='mx-2'>
                         Cancel
                     </Button>
@@ -135,4 +121,4 @@ function AboutCreate() {
     )
 }
 
-export default AboutCreate;
+export default BannerCreate;
