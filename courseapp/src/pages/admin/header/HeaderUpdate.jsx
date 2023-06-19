@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from "sweetalert2";
 import axios from 'axios';
 
-function HeaderCreate() {
+function HeaderUpdate() {
+
+    const { id } = useParams();
 
     const navigate = useNavigate();
 
@@ -16,15 +18,18 @@ function HeaderCreate() {
     const [showImage, setShowImage] = useState(null);
     const [title, setTitle] = useState();
 
-    const getAllHeader = async () => {
-        await axios.get(`${url}/api/Header/GetAll`)
+
+    const getHeader = async () => {
+        await axios.get(`${url}/api/Header/GetById?id=${id}`)
             .then((res) => {
                 setHeader(res.data);
+                setImage(res.data.image);
+                setTitle(res.data.title);
             });
     };
 
     useEffect(() => {
-        getAllHeader();
+        getHeader()
     }, []);
 
     const newHeader = {
@@ -32,7 +37,7 @@ function HeaderCreate() {
         title: title
     };
 
-    const CreateHeader = async (e) => {
+    const UpdateHeader = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
@@ -40,7 +45,7 @@ function HeaderCreate() {
             formData.append(key, value);
         };
 
-        await axios.post(`${url}/api/Header/Create`, formData, {
+        await axios.put(`${url}/api/Header/Update/${id}`, formData, {
             headers: {
                 Accept: "*/*"
             }
@@ -49,7 +54,7 @@ function HeaderCreate() {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Header Created',
+                    title: 'Header Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -59,41 +64,41 @@ function HeaderCreate() {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',
-                    title: 'Header not Created',
+                    title: 'Header not Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
-            });
+            })
 
         navigate('/HeaderTable');
     };
 
-    const fileUploadHandler = async (e) => {
-        const files = e.target.files[0];
-        setImage(files);
-        setShowImage(URL.createObjectURL(files));
+    const fileUploadHandler = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        setShowImage(URL.createObjectURL(file));
     };
 
     return (
         <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-            <h2 className='my-5' style={{ textAlign: "center" }}>Create Header</h2>
-            <Form onSubmit={(e) => CreateHeader(e)}>
+            <h2 className='my-5' style={{ textAlign: "center" }}>Update Header</h2>
+            <Form onSubmit={(e) => UpdateHeader(e)}>
+                <p>Image</p>
+                {
+                    image !== null ?
+                        <img
+                            style={{
+                                width: "200px",
+                                height: "100px",
+                                marginBottom: "10px",
+                                borderRadius: "unset",
+                            }}
+                            src={`data:image/png;base64,${image}`}
+                            alt=""
+                        /> : null
+                }
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <p>Image</p>
-                    {
-                        showImage !== null ?
-                            <img
-                                style={{
-                                    width: "200px",
-                                    height: "100px",
-                                    marginBottom: "10px",
-                                    borderRadius: "unset",
-                                }}
-                                src={showImage}
-                                alt="header image"
-                            /> : null
-                    }
                     <Form.Control
                         type="file"
                         onChange={(e) => fileUploadHandler(e)}
@@ -104,15 +109,16 @@ function HeaderCreate() {
                     <Form.Label>Title</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Enter Title"
+                        name={title}
+                        placeholder={title}
                         onFocus={(e) => e.target.placeholder = ''}
-                        onBlur={(e) => e.target.placeholder = 'Enter Title'}
+                        onBlur={(e) => e.target.placeholder = title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </Form.Group>
 
                 <Button variant="outline-primary" type="submit">
-                    Create
+                    Update
                 </Button>
                 <Link to="/HeaderTable">
                     <Button variant="outline-dark" type="submit" className='mx-2'>
@@ -124,4 +130,4 @@ function HeaderCreate() {
     )
 }
 
-export default HeaderCreate;
+export default HeaderUpdate;
