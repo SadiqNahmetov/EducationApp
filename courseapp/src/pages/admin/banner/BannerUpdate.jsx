@@ -1,46 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Swal from "sweetalert2";
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
-function HeaderCreate() {
+function BannerUpdate() {
+
+    const { id } = useParams();
 
     const navigate = useNavigate();
 
     const url = 'https://localhost:7184';
 
-    const [header, setHeader] = useState([]);
-    const [image, setImage] = useState();
-    const [showImage, setShowImage] = useState(null);
+    const [banner, setBanner] = useState([]);
+    const [svg, setSvg] = useState();
+    const [showSvg, setShowSvg] = useState(null);
     const [title, setTitle] = useState();
 
-    const getAllHeader = async () => {
-        await axios.get(`${url}/api/Header/GetAll`)
+    const getBanner = async () => {
+        await axios.get(`${url}/api/Banner/GetById?id=${id}`)
             .then((res) => {
-                setHeader(res.data);
+                setBanner(res.data);
+                setSvg(res.data.image);
+                setTitle(res.data.title);
             });
     };
 
     useEffect(() => {
-        getAllHeader();
+        getBanner();
     }, []);
 
-    const newHeader = {
-        photo: image,
+    const newBanner = {
+        photo: svg,
         title: title
     };
 
-    const CreateHeader = async (e) => {
+    const UpdateBanner = async (e) => {
         e.preventDefault();
 
         const formData = new FormData();
-        for (const [key, value] of Object.entries(newHeader)) {
+        for (const [key, value] of Object.entries(newBanner)) {
             formData.append(key, value);
         };
 
-        await axios.post(`${url}/api/Header/Create`, formData, {
+        await axios.put(`${url}/api/Banner/Update/${id}`, formData, {
             headers: {
                 Accept: "*/*"
             }
@@ -49,7 +53,7 @@ function HeaderCreate() {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'success',
-                    title: 'Header Created',
+                    title: 'Banner Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
@@ -59,41 +63,41 @@ function HeaderCreate() {
                 Swal.fire({
                     position: 'top-end',
                     icon: 'error',
-                    title: 'Header not Created',
+                    title: 'Banner not Updated',
                     showConfirmButton: false,
                     timer: 1500
                 });
                 console.log(err);
             });
 
-        navigate('/HeaderTable');
+        navigate('/BannerTable');
     };
 
-    const fileUploadHandler = async (e) => {
-        const files = e.target.files[0];
-        setImage(files);
-        setShowImage(URL.createObjectURL(files));
+    const fileUploadHandler = (e) => {
+        const file = e.target.files[0];
+        setSvg(file);
+        setShowSvg(URL.createObjectURL(file));
     };
 
     return (
         <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
-            <h2 className='my-5' style={{ textAlign: "center" }}>Create Header</h2>
-            <Form onSubmit={(e) => CreateHeader(e)}>
+            <h2 className='my-5' style={{ textAlign: "center" }}>Update Banner</h2>
+            <Form onSubmit={(e) => UpdateBanner(e)}>
+                <p>Image</p>
+                {
+                    svg !== null ?
+                        <img
+                            style={{
+                                width: "200px",
+                                height: "100px",
+                                marginBottom: "10px",
+                                borderRadius: "unset",
+                            }}
+                            src={`data:image/svg+xml;base64,${svg}`}
+                            alt="bannerIamge"
+                        /> : null
+                }
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <p>Image</p>
-                    {
-                        showImage !== null ?
-                            <img
-                                style={{
-                                    width: "200px",
-                                    height: "100px",
-                                    marginBottom: "10px",
-                                    borderRadius: "unset",
-                                }}
-                                src={showImage}
-                                alt="header image"
-                            /> : null
-                    }
                     <Form.Control
                         type="file"
                         onChange={(e) => fileUploadHandler(e)}
@@ -104,17 +108,18 @@ function HeaderCreate() {
                     <Form.Label>Title</Form.Label>
                     <Form.Control
                         type="text"
-                        placeholder="Enter Title"
+                        name={title}
+                        placeholder={title}
                         onFocus={(e) => e.target.placeholder = ''}
-                        onBlur={(e) => e.target.placeholder = 'Enter Title'}
+                        onBlur={(e) => e.target.placeholder = title}
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </Form.Group>
 
                 <Button variant="outline-primary" type="submit">
-                    Create
+                    Update
                 </Button>
-                <Link to="/HeaderTable">
+                <Link to="/BannerTable">
                     <Button variant="outline-dark" type="submit" className='mx-2'>
                         Cancel
                     </Button>
@@ -124,4 +129,4 @@ function HeaderCreate() {
     )
 }
 
-export default HeaderCreate;
+export default BannerUpdate;

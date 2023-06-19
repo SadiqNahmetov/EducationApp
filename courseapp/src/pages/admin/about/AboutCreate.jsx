@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Swal from "sweetalert2";
 import axios from 'axios';
-
 
 function AboutCreate() {
 
@@ -14,9 +13,9 @@ function AboutCreate() {
 
     const [about, setAbout] = useState([]);
     const [image, setImage] = useState();
+    const [showImage, setShowImage] = useState(null);
     const [title, setTitle] = useState();
     const [description, setDescription] = useState();
-
 
     const getAllAbout = async () => {
         await axios.get(`${url}/api/About/GetAll`)
@@ -29,15 +28,26 @@ function AboutCreate() {
         getAllAbout();
     }, []);
 
+
     const newAbout = {
-        image,
-        title,
-        description
+        photo: image,
+        title: title,
+        description: description
     };
 
     const CreateAbout = async (e) => {
         e.preventDefault();
-        await axios.post(`${url}/api/About/Create`, newAbout)
+
+        const formData = new FormData();
+        for (const [key, value] of Object.entries(newAbout)) {
+            formData.append(key, value);
+        };
+
+        await axios.post(`${url}/api/About/Create`, formData, {
+            headers: {
+                Accept: "*/*"
+            }
+        })
             .then((res) => {
                 Swal.fire({
                     position: 'top-end',
@@ -62,22 +72,11 @@ function AboutCreate() {
         navigate('/AboutTable');
     };
 
-    const getBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const reader = new FileReader();
-            reader.readAsDataURL(file);
-
-            reader.onload = () => resolve(reader.result.replace(/^data:.+;base64,/, ''));
-            reader.onerror = (error) => reject(error);
-        });
+    const fileUploadHandler = (e) => {
+        const file = e.target.files[0];
+        setImage(file);
+        setShowImage(URL.createObjectURL(file));
     };
-
-    const base64Img = (file) => {
-        getBase64(file).then((result) => {
-            setImage(result);
-        });
-    };
-
 
     return (
         <div className="create-btn-area container" style={{ maxWidth: "500px" }}>
@@ -85,19 +84,21 @@ function AboutCreate() {
             <Form onSubmit={(e) => CreateAbout(e)}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <p>Image</p>
-                    <img
-                        style={{
-                            width: "200px",
-                            height: "100px",
-                            marginBottom: "10px",
-                            borderRadius: "unset",
-                        }}
-                        src={`data:image/jpeg;base64,${image}`}
-                        alt="about image"
-                    />
+                    {showImage !== null ?
+                        <img
+                            style={{
+                                width: "200px",
+                                height: "100px",
+                                marginBottom: "10px",
+                                borderRadius: "unset",
+                            }}
+                            src={showImage}
+                            alt="aboutImage"
+                        /> : null
+                    }
                     <Form.Control
                         type="file"
-                        onChange={(e) => base64Img(e.target.files[0])}
+                        onChange={(e) => fileUploadHandler(e)}
                     />
                 </Form.Group>
 
@@ -106,18 +107,19 @@ function AboutCreate() {
                     <Form.Control
                         type="text"
                         placeholder="Enter Title"
-                        onFocus={(e) => e.target.placeholder = ''}
-                        onBlur={(e) => e.target.placeholder = 'Enter Title'}
+                        onFocus={(e) => { e.target.placeholder = ''; }}
+                        onBlur={(e) => { e.target.placeholder = "Enter Title"; }}
                         onChange={(e) => setTitle(e.target.value)}
                     />
                 </Form.Group>
+
                 <Form.Group className="mb-3" controlId="formBasicPassword">
                     <Form.Label>Description</Form.Label>
                     <Form.Control
                         type="text"
                         placeholder="Enter Description"
-                        onFocus={(e) => e.target.placeholder = ''}
-                        onBlur={(e) => e.target.placeholder = 'Enter Description'}
+                        onFocus={(e) => { e.target.placeholder = ''; }}
+                        onBlur={(e) => { e.target.placeholder = "Enter Description"; }}
                         onChange={(e) => setDescription(e.target.value)}
                     />
                 </Form.Group>
