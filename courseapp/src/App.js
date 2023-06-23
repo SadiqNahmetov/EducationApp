@@ -21,6 +21,10 @@ import AboutCreate from "./pages/admin/about/AboutCreate";
 import AboutUpdate from "./pages/admin/about/AboutUpdate";
 import BannerTable from "./pages/admin/banner/BannerTable";
 import BannerCreate from "./pages/admin/banner/BannerCreate";
+import BannerUpdate from "./pages/admin/banner/BannerUpdate";
+import TitleTable from "./pages/admin/title/TitleTable";
+import TitleCreate from "./pages/admin/title/TitleCreate";
+import TitleUpdate from "./pages/admin/title/TitleUpdate";
 
 
 
@@ -57,7 +61,11 @@ function App() {
 
         <Route path="/bannerTable" element={<BannerTable />} />
         <Route path="/bannerCreate" element={<BannerCreate />} />
+        <Route path="/bannerUpdate/:id" element={<BannerUpdate />} />
 
+        <Route path="/titleTable" element={<TitleTable />} />
+        <Route path="/titleCreate" element={<TitleCreate />} />
+        <Route path="/titleUpdate/:id" element={<TitleUpdate />} />
         
 
 
