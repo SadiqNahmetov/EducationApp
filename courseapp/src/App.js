@@ -25,6 +25,11 @@ import BannerUpdate from "./pages/admin/banner/BannerUpdate";
 import TitleTable from "./pages/admin/title/TitleTable";
 import TitleCreate from "./pages/admin/title/TitleCreate";
 import TitleUpdate from "./pages/admin/title/TitleUpdate";
+import ServiceTable from "./pages/admin/service/ServiceTable";
+import ServiceCreate from "./pages/admin/service/ServiceCreate";
+import ServiceUpdate from "./pages/admin/service/ServiceUpdate";
+import ContactTable from "./pages/admin/contact/ContactTable";
+import ContactUpdate from "./pages/admin/contact/ContactUpdate";
 
 
 
@@ -62,10 +67,20 @@ function App() {
         <Route path="/bannerTable" element={<BannerTable />} />
         <Route path="/bannerCreate" element={<BannerCreate />} />
         <Route path="/bannerUpdate/:id" element={<BannerUpdate />} />
+         
+        <Route path="/contactTable" element={<ContactTable />} />
+        <Route path="/contactUpdate" element={<ContactUpdate />} />
+
+
 
         <Route path="/titleTable" element={<TitleTable />} />
         <Route path="/titleCreate" element={<TitleCreate />} />
         <Route path="/titleUpdate/:id" element={<TitleUpdate />} />
+
+        <Route path="/serviceTable" element={<ServiceTable />} />
+        <Route path="/serviceCreate" element={<ServiceCreate/>} />
+        <Route path="/serviceUpdate/:id" element={<ServiceUpdate />} />
+
         
 
 
