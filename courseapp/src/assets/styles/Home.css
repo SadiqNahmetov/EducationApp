@@ -75,6 +75,20 @@ div {
 	box-sizing: border-box;
 }
 
+
+
+
+.myHeigt{
+	margin-top: 13rem!important;
+    margin-bottom: 25rem!important;
+	height:450px !important;
+}    
+
+.registerHeigt{
+	margin-top: 13rem!important;
+	margin-bottom: 8rem!important;
+	height: 800px !important;
+}
 ul {
 	list-style: none;
 	margin-bottom: 0px;
@@ -233,12 +247,14 @@ section {
 }
 
 
-.colorLogin{
+.colorLogin {
 	color: #000;
 }
-.colorLogin:hover{
+
+.colorLogin:hover {
 	color: red;
 }
+
 .clearfix {
 	zoom: 1;
 }
@@ -275,6 +291,10 @@ section {
 	transition: all 400ms ease;
 }
 
+
+
+
+
 .trans_500 {
 	-webkit-transition: all 500ms ease;
 	-moz-transition: all 500ms ease;
@@ -307,7 +327,7 @@ section {
 /*********************************
 3. Header
 *********************************/
-.basket-icon{
+.basket-icon {
 	margin-left: 30px;
 	color: #fff;
 	font-size: 30px;
@@ -394,7 +414,7 @@ section {
 
 .main_nav_item {
 	display: inline-block;
-	margin-right: 40px ;
+	margin-right: 40px;
 }
 
 .main_nav_item:last-child {
@@ -616,15 +636,17 @@ section {
 .menu_social_item {
 	display: inline-block;
 	margin-right: 30px;
-	
+
 }
 
 .menu_social_item a .fab {
 	color: #ece6e6;
 }
-.__cf_email__{
+
+.__cf_email__ {
 	color: #a5a5a5;
 }
+
 .menu_social_item a .fab:hover {
 	color: #ffb606;
 }
@@ -810,7 +832,8 @@ section {
 	left: 0;
 	width: 100%;
 }
-.hero_boxes_inner .container{
+
+.hero_boxes_inner .container {
 	max-width: 1220px;
 }
 
@@ -830,15 +853,17 @@ section {
 }
 
 
-.hero_box:hover .box-icons{
+.hero_box:hover .box-icons {
 	filter: brightness(40.5);
 }
+
 .hero_box img {
 	width: 62px;
 	height: auto;
 	margin-top: -6px;
 }
-.box-icons path{
+
+.box-icons path {
 	fill: red !important;
 }
 
@@ -886,7 +911,7 @@ section {
 	padding-bottom: 117px;
 }
 
-.title_section{
+.title_section {
 	padding-top: 45px;
 
 }
@@ -1378,10 +1403,12 @@ input:last-of-type {
 	width: 100%;
 	background: #1a1a1a;
 }
-.footer_copyright{
-color: #a5a5a5;
+
+.footer_copyright {
+	color: #a5a5a5;
 
 }
+
 .footer .section_title h1 {
 	color: #FFFFFF;
 }
@@ -1454,13 +1481,14 @@ color: #a5a5a5;
 	font-weight: 500;
 	color: #FFFFFF;
 	padding-top: 15px;
-	
+
 }
 
 .footer_column_content {
 	margin-top: 32px;
 }
-.footer_column_content ul{
+
+.footer_column_content ul {
 	padding-left: 0 !important;
 }
 

@@ -32,7 +32,7 @@ function Service() {
                             return (
                                 <div key={index} className="col-lg-4 service_item text-left d-flex flex-column align-items-start justify-content-start">
                                     <div className="icon_container d-flex flex-column justify-content-end">
-                                        <img src={`data:image/svg+xml;base64, ${item.image}`} alt="" />
+                                        <img src={`data:image/svg+xml;base64, ${item.image}`} alt="service" />
                                     </div>
                                     <h3>{item.name}</h3>
                                     <p>{item.description}</p>
