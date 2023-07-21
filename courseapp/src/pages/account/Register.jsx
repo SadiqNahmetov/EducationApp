@@ -1,11 +1,10 @@
-import * as React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Navbar from '../../components/layout/Navbar';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
-
 import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
@@ -13,27 +12,74 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Header from '../../components/header/Header';
-import Navbar from '../../components/layout/Navbar';
 import Footer from '../../components/layout/Footer';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 
 const theme = createTheme();
 
-export default function SignInSide() {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+function Register() {
+
+  const navigate = useNavigate();
+
+  const url = 'https://localhost:7184';
+
+  const [FullName, setFullName] = useState("");
+  const [Username, setUsername] = useState("");
+  const [Email, setEmail] = useState("");
+  const [Password, setPassword] = useState("");
+  const [ConfirmPassword, setConfirmPassword] = useState("");
+
+  const newUser = {
+    fullname: FullName,
+    username: Username,
+    email: Email,
+    password: Password,
+    confirmPassword: ConfirmPassword
   };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+    for (const [key, value] of Object.entries(newUser)) {
+      formData.append(key, value);
+    };
+
+    await axios.post(`${url}/api/Account/Register`, formData, {
+      headers: {
+        Accept: "*/*"
+      }
+    })
+      .then((res) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'User Created',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(res);
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: 'top-end',
+          icon: 'error',
+          title: 'User Not Created',
+          showConfirmButton: false,
+          timer: 1500
+        });
+        console.log(err);
+      });
+  };
+
 
   return (
     <>
-    <Navbar />
-      <Header />
-      <div className='container  registerHeigt my-5' >
+      <Navbar />
+      <Header sectionHeader="Register" />
+      <div className='container my-5'>
         <ThemeProvider theme={theme}>
           <Grid container component="main" sx={{ height: '100vh' }}>
             <CssBaseline />
@@ -43,7 +89,7 @@ export default function SignInSide() {
               sm={4}
               md={7}
               sx={{
-                backgroundImage: 'url(./images/book.jpg)',
+                backgroundImage: 'url(./images/study.jpeg)',
                 backgroundRepeat: 'no-repeat',
                 backgroundColor: (t) =>
                   t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -65,9 +111,33 @@ export default function SignInSide() {
                   <LockOutlinedIcon />
                 </Avatar>
                 <Typography component="h1" variant="h5">
-                  Sign Up
+                  Register
                 </Typography>
-                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+                <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }} >
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="fullname"
+                    label="Fullname"
+                    name="fullname"
+                    type="text"
+                    // autoComplete="off"
+                    value={FullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                  />
+                  <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="username"
+                    label="Username"
+                    name="username"
+                    type="text"
+                    autoComplete="off"
+                    value={Username}
+                    onChange={(e) => setUsername(e.target.value)}
+                  />
                   <TextField
                     margin="normal"
                     required
@@ -75,74 +145,44 @@ export default function SignInSide() {
                     id="email"
                     label="Email Address"
                     name="email"
-                    autoComplete="email"
-                    autoFocus
+                    type="email"
+                    // autoComplete="off"
+                    value={Email}
+                    onChange={(e) => setEmail(e.target.value)}
                   />
                   <TextField
                     margin="normal"
                     required
                     fullWidth
-                    name="fullname"
-                    label="Fullname"
-                    type="text"
-                    id="fullname"
-                    autoComplete="current-password"
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="username"
-                    label="Username"
-                    type="text"
-                    id="username"
-                    autoComplete="current-password"
-                  />
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
                     id="password"
-                    autoComplete="current-password"
+                    label="Password"
+                    name="password"
+                    type="password"
+                    // autoComplete="off"
+                    value={Password}
+                    onChange={(e) => setPassword(e.target.value)}
                   />
                   <TextField
                     margin="normal"
                     required
                     fullWidth
-                    name="current-password"
-                    label="Confirim Password"
+                    id="confirmPassword"
+                    label="Confirm Password"
+                    name="confirmPassword"
                     type="password"
-                    id="confirim-password"
-                  
+                    // autoComplete="off"
+                    value={ConfirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
                   />
-                  <FormControlLabel
-                    control={<Checkbox value="remember" color="primary" />}
-                    label="Remember me"
-                  />
-                  <Button
-                    style={{ background: '#ffb606' }}
-                    type="submit"
-                    fullWidth
-                    variant="contained"
-                    sx={{ mt: 3, mb: 2 }}
-                  >
-                    Sign Up
-                  </Button>
-                  <Grid container>
-                   
-                  
-                  </Grid>
+                  <Button id="contact_send_btn" type="submit" className="contact_send_btn trans_200">Sign Up</Button>
                 </Box>
               </Box>
             </Grid>
           </Grid>
         </ThemeProvider>
       </div>
-      <Footer />  
+      <Footer />
     </>
-
   );
 }
+export default Register;
