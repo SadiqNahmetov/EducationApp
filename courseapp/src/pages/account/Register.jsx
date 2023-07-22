@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../components/layout/Navbar';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
 import Paper from '@mui/material/Paper';
@@ -25,18 +24,19 @@ function Register() {
 
   const url = 'https://localhost:7184';
 
+
   const [FullName, setFullName] = useState("");
   const [Username, setUsername] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
-  const [ConfirmPassword, setConfirmPassword] = useState("");
+  const [RepeatPassword, setRepeatPassword] = useState("");
 
   const newUser = {
     fullname: FullName,
     username: Username,
     email: Email,
     password: Password,
-    confirmPassword: ConfirmPassword
+    repeatPassword: RepeatPassword
   };
 
   const handleSubmit = async (e) => {
@@ -166,15 +166,15 @@ function Register() {
                     margin="normal"
                     required
                     fullWidth
-                    id="confirmPassword"
-                    label="Confirm Password"
-                    name="confirmPassword"
+                    id="repeatPassword"
+                    label="Repeat Password"
+                    name="repeatPassword"
                     type="password"
                     // autoComplete="off"
-                    value={ConfirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    value={RepeatPassword}
+                    onChange={(e) => setRepeatPassword(e.target.value)}
                   />
-                  <Button id="contact_send_btn" type="submit" className="contact_send_btn trans_200">Sign Up</Button>
+                  <button id="contact_send_btn" type="submit" className="contact_send_btn trans_200">Sign Up</button>
                 </Box>
               </Box>
             </Grid>
