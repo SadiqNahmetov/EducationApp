@@ -24,12 +24,13 @@ function Register() {
 
   const url = 'https://localhost:7184';
 
-
   const [FullName, setFullName] = useState("");
   const [Username, setUsername] = useState("");
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
   const [RepeatPassword, setRepeatPassword] = useState("");
+
+
 
   const newUser = {
     fullname: FullName,
@@ -56,20 +57,24 @@ function Register() {
         Swal.fire({
           position: 'top-end',
           icon: 'success',
-          title: 'User Created',
+          title: 'Please Check Your Email',
           showConfirmButton: false,
-          timer: 1500
+          timer: 3000
         });
         console.log(res);
       })
       .catch((err) => {
-        Swal.fire({
-          position: 'top-end',
-          icon: 'error',
-          title: 'User Not Created',
-          showConfirmButton: false,
-          timer: 1500
-        });
+        if (err.response && err.response.data && err.response.data.errors) {
+          const errors = err.response.data.errors;
+          const errorMessage = errors.join('\n');
+          Swal.fire({
+            position: 'top-end',
+            icon: 'error',
+            text: errorMessage, 
+            showConfirmButton: false,
+            timer: 3000
+          });
+        }
         console.log(err);
       });
   };
@@ -79,7 +84,7 @@ function Register() {
     <>
       <Navbar />
       <Header sectionHeader="Register" />
-      <div className='container my-5'>
+      <div className='container my-5 tf'>
         <ThemeProvider theme={theme}>
           <Grid container component="main" sx={{ height: '100vh' }}>
             <CssBaseline />
@@ -122,7 +127,7 @@ function Register() {
                     label="Fullname"
                     name="fullname"
                     type="text"
-                    // autoComplete="off"
+                    autoComplete="off"
                     value={FullName}
                     onChange={(e) => setFullName(e.target.value)}
                   />
