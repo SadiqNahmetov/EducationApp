@@ -15,7 +15,6 @@ import Footer from '../../components/layout/Footer';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 
-
 const theme = createTheme();
 
 function Register() {
@@ -30,8 +29,6 @@ function Register() {
   const [Password, setPassword] = useState("");
   const [RepeatPassword, setRepeatPassword] = useState("");
 
-
-
   const newUser = {
     fullname: FullName,
     username: Username,
@@ -43,40 +40,59 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    
+    if (!FullName || !Username || !Email || !Password || !RepeatPassword) {
+      Swal.fire({
+        position: 'top-end',
+        icon: 'error',
+        text: 'Lütfen tüm alanları doldurun.',
+        showConfirmButton: false,
+        timer: 3000
+      });
+      return;
+    }
+
     const formData = new FormData();
     for (const [key, value] of Object.entries(newUser)) {
       formData.append(key, value);
-    };
+    }
 
-    await axios.post(`${url}/api/Account/Register`, formData, {
-      headers: {
-        Accept: "*/*"
-      }
-    })
-      .then((res) => {
+    try {
+      await axios.post(`${url}/api/Account/Register`, formData, {
+        headers: {
+          Accept: "*/*"
+        }
+      });
+
+      Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Lütfen E-postanızı Kontrol Edin',
+        showConfirmButton: false,
+        timer: 3000
+      });
+
+   
+      setFullName("");
+      setUsername("");
+      setEmail("");
+      setPassword("");
+      setRepeatPassword("");
+
+    } catch (err) {
+      if (err.response && err.response.data && err.response.data.errors) {
+        const errors = err.response.data.errors;
+        const errorMessage = errors.join('\n');
         Swal.fire({
           position: 'top-end',
-          icon: 'success',
-          title: 'Please Check Your Email',
+          icon: 'error',
+          text: errorMessage, 
           showConfirmButton: false,
           timer: 3000
         });
-        console.log(res);
-      })
-      .catch((err) => {
-        if (err.response && err.response.data && err.response.data.errors) {
-          const errors = err.response.data.errors;
-          const errorMessage = errors.join('\n');
-          Swal.fire({
-            position: 'top-end',
-            icon: 'error',
-            text: errorMessage, 
-            showConfirmButton: false,
-            timer: 3000
-          });
-        }
-        console.log(err);
-      });
+      }
+      console.log(err);
+    }
   };
 
 
@@ -129,7 +145,8 @@ function Register() {
                     type="text"
                     autoComplete="off"
                     value={FullName}
-                    onChange={(e) => setFullName(e.target.value)}
+                    onChange={(e) =>  setFullName(e.target.value)}
+                  
                   />
                   <TextField
                     margin="normal"
@@ -179,7 +196,8 @@ function Register() {
                     value={RepeatPassword}
                     onChange={(e) => setRepeatPassword(e.target.value)}
                   />
-                  <button id="contact_send_btn" type="submit" className="contact_send_btn trans_200">Sign Up</button>
+                  <button id="contact_send_btn" type="submit" className="contact_send_btn trans_200" 
+                  >Sign Up</button>
                 </Box>
               </Box>
             </Grid>
@@ -190,4 +208,5 @@ function Register() {
     </>
   );
 }
+
 export default Register;

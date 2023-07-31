@@ -197,7 +197,7 @@ function Login() {
           let userDecode = parseJwt(res.data)[
             "http://schemas.microsoft.com/ws/2008/06/identity/claims/role"
           ];
-          if (userDecode === "Member") {
+          if (userDecode === "Admin") {
             Swal.fire({
               position: 'top-end',
               icon: 'error',
@@ -311,7 +311,7 @@ function Login() {
                       </Link>
                     </Grid>
                     <Grid item>
-                      <Link to="/Register" href="#" variant="body2">
+                      <Link href="/Register"  variant="body2">
                         {"Don't have an account? Sign Up"}
                       </Link>
                     </Grid>
