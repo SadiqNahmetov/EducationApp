@@ -1,12 +1,56 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { JwtContext } from '../../Context/Context';
 import Dropdown from 'react-bootstrap/Dropdown';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {SlBasket} from 'react-icons/sl'
+import swal from 'sweetalert2';
 
 
 
 function Navbar() {
 
+
+
+  const url = 'https://localhost:7184';
+
+  const navigate = useNavigate();
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const {ParseJwt} = useContext(JwtContext);
+
+  const Logout = async (e) => {
+    e.preventDefault();
+
+    let removeToken = localStorage.removeItem("token");
+
+    if (removeToken == null || removeToken == undefined) {
+      setIsLoggedIn(false);
+      navigate("/");
+      swal.fire("", "Logout successfully", "success");
+    }
+    else swal.fire("", "Logout failed", "error");
+  };
+
+  const token = JSON.parse(localStorage.getItem("token"));
+  let userName = "";
+  if (token != null) {
+    userName = ParseJwt(token)["http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"]
+  }
+
+  const handleOpen = () => {
+    setIsLoggedIn(token != null);
+  };
+
+  useEffect(() => {
+    handleOpen()
+  }, []);
+
+
+  const style = {
+    color: 'black'
+  }
+  
   return (
     <>
       <header className="header d-flex flex-row">
@@ -39,10 +83,21 @@ function Navbar() {
           </Dropdown.Toggle>
 
           <Dropdown.Menu>
-            <Dropdown.Item ><Link className='colorLogin' to ="">Username</Link></Dropdown.Item>
-            <Dropdown.Item ><Link className='colorLogin' to ="/login">Login</Link></Dropdown.Item>
-            <Dropdown.Item ><Link className='colorLogin' to ="/register">Register</Link></Dropdown.Item>
-            <Dropdown.Item ><Link className='colorLogin' to ="">Logout</Link></Dropdown.Item>
+          {isLoggedIn ? (
+              <>
+                <Dropdown.Item ><Link style={style}>{userName}</Link></Dropdown.Item>
+                <Dropdown.Item onClick={(e) => Logout(e)}><Link style={style}>Logout</Link></Dropdown.Item>
+              </>
+            ) : (
+              <>
+                <Dropdown.Item>
+                  <Link style={style} to="/login">Login</Link>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Link style={style} to="/register">Register</Link>
+                </Dropdown.Item>
+              </>
+            )}
           </Dropdown.Menu>
         </Dropdown>
        <Link to="basket"> <SlBasket  className='basket-icon'/></Link>
@@ -57,3 +112,4 @@ function Navbar() {
 }
 
 export default Navbar;
+

@@ -7,17 +7,19 @@ import { BrowserRouter } from "react-router-dom";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import ScrollTop from './components/helpers/ScrollTop';
-
+import { JwtContext,ParseJwt } from './Context/Context';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
 
-    <BrowserRouter>
-      <ScrollTop />
-      <App />
-    </BrowserRouter>
 
+    <JwtContext.Provider value = {{ParseJwt}}>
+      <BrowserRouter>
+        <ScrollTop />
+        <App />
+      </BrowserRouter>
+    </JwtContext.Provider>
   </React.StrictMode>
 );
 
