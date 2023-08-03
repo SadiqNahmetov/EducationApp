@@ -15,8 +15,8 @@ function Course() {
       <Navbar />
 
       <div className='course-page'>
-        <Header />
-        <Title />
+        <Header sectionHeader="Courses" />
+        <Title sectionTitle="Popular Courses"/>
 
         <div className='card-area'>
           <Card />
