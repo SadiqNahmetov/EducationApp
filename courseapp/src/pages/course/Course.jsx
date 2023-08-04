@@ -20,8 +20,6 @@ function Course() {
 
         <div className='card-area'>
           <Card />
-          <Card />
-          <Card />
         </div>
 
       </div>

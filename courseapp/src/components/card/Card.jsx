@@ -16,9 +16,9 @@ function Card() {
         setCourse(res.data);
       });
   }
-
   useEffect(() => {
     getAllCourse();
+    console.log(course);
   })
 
   return (
@@ -28,9 +28,8 @@ function Card() {
         <div className="row course_boxes">
           {
             course.map((item, index) => {
-           
               return (
-                <div className="col-lg-4 course_box">
+                <div key={index} className="col-lg-4 course_box">
                   <div className="card">
                     <img className="card-img-top" src={`data:image/png;base64,${item.image}`} alt="" />
                     <div className="card-body text-center">
@@ -50,17 +49,11 @@ function Card() {
               )
             })
           }
-
-
-     
         </div>
       </div>
     </div>
   )
 }
-
-
-
 export default Card;
 
 
