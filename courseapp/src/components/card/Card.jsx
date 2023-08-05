@@ -42,6 +42,7 @@ function Card() {
                       </div>
                       <div className="course_author_name">Michael Smith, <span>Author</span></div>
                       <div className="course_price d-flex flex-column align-items-center justify-content-center"><span>${item.price}</span>
+                     
                       </div>
                     </div>
                   </div>

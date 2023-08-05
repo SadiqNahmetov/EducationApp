@@ -58,6 +58,17 @@ function Dashboard() {
                                 <tr className='table-success'>
                                     <th scope="row">4</th>
                                     <td>
+                                        <h3>Course</h3>
+                                    </td>
+                                    <td>
+                                        <Link to="/CourseTable">
+                                            <Button variant="outline-primary">Manage</Button>
+                                        </Link>
+                                    </td>
+                                </tr>
+                                <tr className='table-success'>
+                                    <th scope="row">5</th>
+                                    <td>
                                         <h3>Header</h3>
 
                                     </td>
@@ -68,7 +79,7 @@ function Dashboard() {
                                     </td>
                                 </tr>
                                 <tr className='table-success'>
-                                    <th scope="row">5</th>
+                                    <th scope="row">6</th>
                                     <td>
                                         <h3>Slider</h3>
 
@@ -80,7 +91,7 @@ function Dashboard() {
                                     </td>
                                 </tr>
                                 <tr className='table-success'>
-                                    <th scope="row">6</th>
+                                    <th scope="row">7</th>
                                     <td>
                                         <h3>Service</h3>
                                     </td>
@@ -91,7 +102,7 @@ function Dashboard() {
                                     </td>
                                 </tr>
                                 <tr className='table-success'>
-                                    <th scope="row">7</th>
+                                    <th scope="row">8</th>
                                     <td>
                                         <h3>Title</h3>
 

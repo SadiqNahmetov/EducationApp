@@ -32,6 +32,7 @@ import ContactTable from "./pages/admin/contact/ContactTable";
 import ContactUpdate from "./pages/admin/contact/ContactUpdate";
 import ForgotPassword from "./pages/account/ForgotPassword";
 import ResetPassword from "./pages/account/ResetPassword";
+import CourseTable from "./pages/admin/course/CourseTable";
 
 
 
@@ -86,6 +87,9 @@ function App() {
         <Route path="/serviceTable" element={<ServiceTable />} />
         <Route path="/serviceCreate" element={<ServiceCreate/>} />
         <Route path="/serviceUpdate/:id" element={<ServiceUpdate />} />
+
+        <Route path="/courseTable" element={<CourseTable />} />
+
 
         
 
